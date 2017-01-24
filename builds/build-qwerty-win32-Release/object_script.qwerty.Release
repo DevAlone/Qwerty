@@ -1,0 +1,14 @@
+INPUT(
+./release/main.o
+./release/mainwindow.o
+./release/layer.o
+./release/image.o
+./release/maintabwidget.o
+./release/drawingtabform.o
+./release/filterstabform.o
+./release/qwerty_plugin_import.o
+./release/moc_mainwindow.o
+./release/moc_image.o
+./release/moc_drawingtabform.o
+./release/moc_filterstabform.o
+);

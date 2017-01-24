@@ -1,0 +1,14 @@
+INPUT(
+./debug/main.o
+./debug/mainwindow.o
+./debug/layer.o
+./debug/image.o
+./debug/maintabwidget.o
+./debug/drawingtabform.o
+./debug/filterstabform.o
+./debug/qwerty_plugin_import.o
+./debug/moc_mainwindow.o
+./debug/moc_image.o
+./debug/moc_drawingtabform.o
+./debug/moc_filterstabform.o
+);
