@@ -50,23 +50,17 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../../main.cpp \
 		../../mainwindow.cpp \
-		../../layer.cpp \
-		../../image.cpp \
 		../../maintabwidget.cpp \
 		../../drawingtabform.cpp \
 		../../filterstabform.cpp moc_mainwindow.cpp \
-		moc_image.cpp \
 		moc_drawingtabform.cpp \
 		moc_filterstabform.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
-		layer.o \
-		image.o \
 		maintabwidget.o \
 		drawingtabform.o \
 		filterstabform.o \
 		moc_mainwindow.o \
-		moc_image.o \
 		moc_drawingtabform.o \
 		moc_filterstabform.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -128,14 +122,10 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		../../../../qwerty.pro ../../mainwindow.h \
-		../../layer.h \
-		../../image.h \
 		../../maintabwidget.h \
 		../../drawingtabform.h \
 		../../filterstabform.h ../../main.cpp \
 		../../mainwindow.cpp \
-		../../layer.cpp \
-		../../image.cpp \
 		../../maintabwidget.cpp \
 		../../drawingtabform.cpp \
 		../../filterstabform.cpp
@@ -308,8 +298,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../../mainwindow.h ../../layer.h ../../image.h ../../maintabwidget.h ../../drawingtabform.h ../../filterstabform.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../../main.cpp ../../mainwindow.cpp ../../layer.cpp ../../image.cpp ../../maintabwidget.cpp ../../drawingtabform.cpp ../../filterstabform.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../../mainwindow.h ../../maintabwidget.h ../../drawingtabform.h ../../filterstabform.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../../main.cpp ../../mainwindow.cpp ../../maintabwidget.cpp ../../drawingtabform.cpp ../../filterstabform.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../../mainwindow.ui ../../drawingtabform.ui ../../filterstabform.ui $(DISTDIR)/
 
 
@@ -333,16 +323,13 @@ check: first
 
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_image.cpp moc_drawingtabform.cpp moc_filterstabform.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_drawingtabform.cpp moc_filterstabform.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_image.cpp moc_drawingtabform.cpp moc_filterstabform.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_drawingtabform.cpp moc_filterstabform.cpp
 moc_mainwindow.cpp: ../../drawingtabform.h \
+		../../filterstabform.h \
 		../../mainwindow.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/user/qt-creator-projects/qwerty -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../../mainwindow.h -o moc_mainwindow.cpp
-
-moc_image.cpp: ../../layer.h \
-		../../image.h
-	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/user/qt-creator-projects/qwerty -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../../image.h -o moc_image.cpp
 
 moc_drawingtabform.cpp: ../../drawingtabform.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/user/qt-creator-projects/qwerty -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../../drawingtabform.h -o moc_drawingtabform.cpp
@@ -376,21 +363,16 @@ compiler_clean: compiler_moc_header_clean compiler_uic_clean
 ####### Compile
 
 main.o: ../../main.cpp ../../mainwindow.h \
-		../../drawingtabform.h
+		../../drawingtabform.h \
+		../../filterstabform.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../../main.cpp
 
 mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../drawingtabform.h \
+		../../filterstabform.h \
 		ui_mainwindow.h \
 		../../maintabwidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../../mainwindow.cpp
-
-layer.o: ../../layer.cpp ../../layer.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o layer.o ../../layer.cpp
-
-image.o: ../../image.cpp ../../image.h \
-		../../layer.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o image.o ../../image.cpp
 
 maintabwidget.o: ../../maintabwidget.cpp ../../maintabwidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o maintabwidget.o ../../maintabwidget.cpp
@@ -405,9 +387,6 @@ filterstabform.o: ../../filterstabform.cpp ../../filterstabform.h \
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
-
-moc_image.o: moc_image.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_image.o moc_image.cpp
 
 moc_drawingtabform.o: moc_drawingtabform.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_drawingtabform.o moc_drawingtabform.cpp
