@@ -1,6 +1,7 @@
 #ifndef FILTERSTABFORM_H
 #define FILTERSTABFORM_H
 
+#include <QLabel>
 #include <QMainWindow>
 
 namespace Ui {
@@ -15,8 +16,11 @@ public:
     explicit FiltersTabForm(QWidget *parent = 0);
     ~FiltersTabForm();
 
+
 private:
     Ui::FiltersTabForm *ui;
+
+
 };
 
 #endif // FILTERSTABFORM_H

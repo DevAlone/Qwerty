@@ -16,7 +16,20 @@ Image::Image(int width, int height, const QColor &backgroundColor)
 
     image = QPixmap(width, height);
     this->backgroundColor = backgroundColor;
-    addLayer(Qt::transparent);
+    addLayer(Qt::green);
+    //addLayer(Qt::transparent);
+    redraw();
+}
+
+Image::Image(const QPixmap &pixmap)
+{
+    this->width = pixmap.width();
+    this->height = pixmap.height();
+
+    image = QPixmap(width, height);
+    this->backgroundColor = Qt::transparent;
+    addLayer(pixmap);
+
     redraw();
 }
 
@@ -34,6 +47,12 @@ bool Image::addLayer(const QColor &backgroundColor = Qt::transparent)
 {
     Layer layer(width, height, backgroundColor);
     layer.getPixmap().fill(backgroundColor);
+    addLayer(layer);
+}
+
+bool Image::addLayer(const QPixmap &pixmap)
+{
+    Layer layer(pixmap);
     addLayer(layer);
 }
 
@@ -58,6 +77,15 @@ void Image::redraw()
         painter.drawPixmap(0, 0, QPixmap::fromImage(tempImage));
         //painter.drawPixmap(0, 0, QPixmap::fromImage(tempImage));
     }
+    //painter.setPen(Qt::green);
+    //painter.drawLine(0, 0, 100, 100);
+}
+
+
+
+void Image::setActiveLayer(int value)
+{
+    activeLayer = value;
 }
 
 QColor Image::getBackgroundColor() const
@@ -69,4 +97,3 @@ void Image::setBackgroundColor(const QColor &value)
 {
     backgroundColor = value;
 }
-

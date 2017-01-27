@@ -13,14 +13,17 @@ class Image : public QObject
     Q_OBJECT
 public:
     explicit Image(QObject *parent = 0);
-    Image(int width, int height, const QColor &backgroundColor);
+    Image(int width, int height, const QColor &backgroundColor = Qt::transparent);
+    Image(const QPixmap &pixmap);
 
     QPixmap getImage() const;
     bool addLayer(const Layer &layer);
     bool addLayer(const QColor &backgroundColor);
+    bool addLayer(const QPixmap &pixmap);
 
     QColor getBackgroundColor() const;
     void setBackgroundColor(const QColor &value);
+    void setActiveLayer(int value);
 
 signals:
 

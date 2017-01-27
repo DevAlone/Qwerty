@@ -1,5 +1,7 @@
 #include "mainwindow.h"
+#include "painter.h"
 #include <QApplication>
+
 
 int main(int argc, char *argv[])
 {

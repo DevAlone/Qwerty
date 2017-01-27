@@ -6,6 +6,7 @@ FiltersTabForm::FiltersTabForm(QWidget *parent) :
     ui(new Ui::FiltersTabForm)
 {
     ui->setupUi(this);
+
 }
 
 FiltersTabForm::~FiltersTabForm()

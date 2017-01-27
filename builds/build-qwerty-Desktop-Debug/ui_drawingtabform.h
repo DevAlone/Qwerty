@@ -17,13 +17,12 @@
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
-#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QScrollArea>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolButton>
 #include <QtWidgets/QWidget>
+#include "tabforms/drawingarea.h"
 
 QT_BEGIN_NAMESPACE
 
@@ -32,10 +31,9 @@ class Ui_DrawingTabForm
 public:
     QWidget *centralwidget;
     QHBoxLayout *horizontalLayout;
-    QScrollArea *scrollArea;
+    DrawingArea *drawingArea;
     QWidget *scrollAreaWidgetContents;
     QHBoxLayout *horizontalLayout_2;
-    QLabel *labelImage;
     QStatusBar *statusbar;
     QDockWidget *dockWidget;
     QWidget *dockWidgetContents;
@@ -56,22 +54,17 @@ public:
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         horizontalLayout = new QHBoxLayout(centralwidget);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        scrollArea = new QScrollArea(centralwidget);
-        scrollArea->setObjectName(QStringLiteral("scrollArea"));
-        scrollArea->setWidgetResizable(true);
+        drawingArea = new DrawingArea(centralwidget);
+        drawingArea->setObjectName(QStringLiteral("drawingArea"));
+        drawingArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
         scrollAreaWidgetContents->setGeometry(QRect(0, 0, 515, 296));
         horizontalLayout_2 = new QHBoxLayout(scrollAreaWidgetContents);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        labelImage = new QLabel(scrollAreaWidgetContents);
-        labelImage->setObjectName(QStringLiteral("labelImage"));
+        drawingArea->setWidget(scrollAreaWidgetContents);
 
-        horizontalLayout_2->addWidget(labelImage);
-
-        scrollArea->setWidget(scrollAreaWidgetContents);
-
-        horizontalLayout->addWidget(scrollArea);
+        horizontalLayout->addWidget(drawingArea);
 
         DrawingTabForm->setCentralWidget(centralwidget);
         statusbar = new QStatusBar(DrawingTabForm);
@@ -148,7 +141,6 @@ public:
     void retranslateUi(QMainWindow *DrawingTabForm)
     {
         DrawingTabForm->setWindowTitle(QApplication::translate("DrawingTabForm", "MainWindow", 0));
-        labelImage->setText(QApplication::translate("DrawingTabForm", "Image will be here", 0));
         pushButton_2->setText(QApplication::translate("DrawingTabForm", "PushButton", 0));
         toolbar->setWindowTitle(QApplication::translate("DrawingTabForm", "too&lbar", 0));
         pushButton->setText(QApplication::translate("DrawingTabForm", "PushButton", 0));

@@ -1,10 +1,12 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "drawingtabform.h"
-#include "filterstabform.h"
+#include "tabforms/drawingtabform.h"
+#include "tabforms/filterstabform.h"
 
 #include <QMainWindow>
+
+#include <tabforms/opentabform.h>
 
 namespace Ui {
 class MainWindow;
@@ -18,13 +20,21 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-private slots:
+    Painter *getPainter() const;
 
+
+private slots:
+    void pixmapOpened(const QPixmap &pixmap);
 
 private:
     Ui::MainWindow *ui;
     DrawingTabForm *drawingTabForm;
     FiltersTabForm *filtersTabForm;
+    OpenTabForm *openTabForm;
+
+    DrawingArea *drawingArea;
+
+    Painter *painter;
 };
 
 #endif // MAINWINDOW_H

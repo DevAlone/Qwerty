@@ -16,7 +16,7 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <widget class="QScrollArea" name="scrollArea">
+     <widget class="DrawingArea" name="drawingArea">
       <property name="widgetResizable">
        <bool>true</bool>
       </property>
@@ -29,15 +29,7 @@
          <height>296</height>
         </rect>
        </property>
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
-        <item>
-         <widget class="QLabel" name="labelImage">
-          <property name="text">
-           <string>Image will be here</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
+       <layout class="QHBoxLayout" name="horizontalLayout_2"/>
       </widget>
      </widget>
     </item>
@@ -138,6 +130,14 @@ QDockWidget::close-button:pressed, QDockWidget::float-button:pressed {
    </widget>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>DrawingArea</class>
+   <extends>QScrollArea</extends>
+   <header>drawingarea.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

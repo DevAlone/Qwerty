@@ -7,6 +7,7 @@ class Layer
 {
 public:
     Layer(int width, int height, const QColor &color = Qt::transparent);
+    Layer(const QPixmap &pixmap);
 
     unsigned char getOpacity() const;
     void setOpacity(unsigned char value);
@@ -16,7 +17,7 @@ public:
 
 protected:
     QPixmap pixmap;
-    unsigned char opacity;
+    unsigned char opacity = 255;
 };
 
 #endif // LAYER_H

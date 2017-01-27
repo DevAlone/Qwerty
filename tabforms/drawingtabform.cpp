@@ -6,9 +6,16 @@ DrawingTabForm::DrawingTabForm(QWidget *parent) :
     ui(new Ui::DrawingTabForm)
 {
     ui->setupUi(this);
+
+
 }
 
 DrawingTabForm::~DrawingTabForm()
 {
     delete ui;
+}
+
+DrawingArea *DrawingTabForm::getDrawingArea()
+{
+    return ui->drawingArea;
 }

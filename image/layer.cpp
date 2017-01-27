@@ -6,6 +6,11 @@ Layer::Layer(int width, int height, const QColor &color)
     pixmap.fill(color);
 }
 
+Layer::Layer(const QPixmap &pixmap)
+{
+    this->pixmap = pixmap;
+}
+
 unsigned char Layer::getOpacity() const
 {
     return opacity;
