@@ -27,7 +27,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(painter, SIGNAL(imageChanged(std::weak_ptr<Image>)),
             drawingArea, SLOT(imageChangedSlot(std::weak_ptr<Image>)));
     connect(painter, SIGNAL(imageUpdated()),
-            drawingArea, SLOT(updateSlot()));
+            drawingArea, SLOT(updateSlot()), Qt::QueuedConnection);
 
     connect(drawingArea, SIGNAL(mouseButtonClicked(QMouseEvent*)),
             painter, SLOT(mouseButtonPressed(QMouseEvent*)));
@@ -40,7 +40,7 @@ MainWindow::MainWindow(QWidget *parent) :
             this, SLOT(pixmapOpened(QPixmap)));
 
 
-    painter->setImage(std::make_shared<Image>(500, 100, Qt::black));
+    painter->setImage(std::make_shared<Image>(700, 700, Qt::black));
 }
 
 MainWindow::~MainWindow()

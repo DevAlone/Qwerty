@@ -1,6 +1,7 @@
 #include "image.h"
 
 #include <QPainter>
+#include <QTime>
 
 
 Image::Image(QObject *parent)
@@ -18,6 +19,7 @@ Image::Image(int width, int height, const QColor &backgroundColor)
     this->backgroundColor = backgroundColor;
     addLayer(Qt::green);
     //addLayer(Qt::transparent);
+    activeLayer = layers.length() - 1;
     redraw();
 }
 
@@ -29,6 +31,7 @@ Image::Image(const QPixmap &pixmap)
     image = QPixmap(width, height);
     this->backgroundColor = Qt::transparent;
     addLayer(pixmap);
+    activeLayer = layers.length() - 1;
 
     redraw();
 }
@@ -46,7 +49,7 @@ bool Image::addLayer(const Layer &layer)
 bool Image::addLayer(const QColor &backgroundColor = Qt::transparent)
 {
     Layer layer(width, height, backgroundColor);
-    layer.getPixmap().fill(backgroundColor);
+    layer.pixmap.fill(backgroundColor);
     addLayer(layer);
 }
 
@@ -56,14 +59,27 @@ bool Image::addLayer(const QPixmap &pixmap)
     addLayer(layer);
 }
 
+Layer *Image::getActiveLayer()
+{
+    if(layers.length() < 1)
+        return 0;
+
+    return &layers[activeLayer];
+}
+
+
 void Image::redraw()
 {
+// нужно оптимизировать это говно
+    QTime t;
+    t.start();
+
     QPainter painter(&image);
     painter.fillRect(0, 0, width, height, backgroundColor);
     for(const Layer& layer : layers) {
-        QImage sourceImage(layer.getPixmap().toImage());
-        int twidth = layer.getPixmap().width();
-        int theight = layer.getPixmap().height();
+        QImage sourceImage(layer.pixmap.toImage());
+        int twidth = layer.pixmap.width();
+        int theight = layer.pixmap.height();
         QImage tempImage(twidth, theight, QImage::Format_ARGB32);
 
         for(int y = 0; y < theight; y++) {
@@ -79,6 +95,8 @@ void Image::redraw()
     }
     //painter.setPen(Qt::green);
     //painter.drawLine(0, 0, 100, 100);
+
+    qDebug("Time elapsed: %d ms", t.elapsed());
 }
 
 

@@ -3,6 +3,7 @@
 #include <QEvent>
 #include <QHBoxLayout>
 #include <QMouseEvent>
+#include <QPainter>
 #include <painter.h>
 
 DrawingArea::DrawingArea(QWidget *parent) : QScrollArea(parent)
@@ -37,7 +38,14 @@ bool DrawingArea::eventFilter(QObject *object, QEvent *event)
             return true;
         } else if (event->type() == QEvent::Paint) {
             QPaintEvent *paintEvent = static_cast<QPaintEvent *>(event);
-            return true;
+            //QLabel *label = static_cast<QLabel *>(object);
+
+            if(imageLabel->pixmap() && !imageLabel->pixmap()->isNull()) {
+                QPainter painter(imageLabel);
+
+                painter.drawPixmap(0, 0, image->getImage());
+                return true;
+            }
         }
     }
     return false;
@@ -62,5 +70,7 @@ void DrawingArea::imageChangedSlot(std::weak_ptr<Image> image)
 void DrawingArea::updateSlot()
 {
     // update image
+
+    imageLabel->update();
 }
 

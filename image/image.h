@@ -21,6 +21,8 @@ public:
     bool addLayer(const QColor &backgroundColor);
     bool addLayer(const QPixmap &pixmap);
 
+    Layer *getActiveLayer();
+
     QColor getBackgroundColor() const;
     void setBackgroundColor(const QColor &value);
     void setActiveLayer(int value);
@@ -34,7 +36,7 @@ protected:
     QColor backgroundColor;
     QList<Layer> layers;
     //QList<std::unique_ptr<Layer>> layers;
-    int activeLayer;
+    int activeLayer = 0;
     QPixmap image;
 
 };

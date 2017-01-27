@@ -21,7 +21,8 @@ SOURCES += main.cpp\
     image/layer.cpp \
     painter.cpp \
     tabforms/drawingarea.cpp \
-    tabforms/opentabform.cpp
+    tabforms/opentabform.cpp \
+    backgroundpainter.cpp
 
 HEADERS  += mainwindow.h \
     maintabwidget.h \
@@ -31,7 +32,8 @@ HEADERS  += mainwindow.h \
     image/layer.h \
     painter.h \
     tabforms/drawingarea.h \
-    tabforms/opentabform.h
+    tabforms/opentabform.h \
+    backgroundpainter.h
 
 FORMS    += mainwindow.ui \
     tabforms/drawingtabform.ui \

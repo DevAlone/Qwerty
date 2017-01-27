@@ -21,13 +21,3 @@ void Layer::setOpacity(unsigned char value)
     opacity = value;
 }
 
-QPixmap Layer::getPixmap() const
-{
-    return pixmap;
-}
-
-void Layer::setPixmap(const QPixmap &value)
-{
-    pixmap = value;
-}
-

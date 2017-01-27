@@ -11,12 +11,10 @@ public:
 
     unsigned char getOpacity() const;
     void setOpacity(unsigned char value);
+    QPixmap pixmap;
 
-    QPixmap getPixmap() const;
-    void setPixmap(const QPixmap &value);
 
 protected:
-    QPixmap pixmap;
     unsigned char opacity = 255;
 };
 

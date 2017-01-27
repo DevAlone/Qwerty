@@ -1,14 +1,18 @@
 #ifndef PAINTER_H
 #define PAINTER_H
 
+#include "backgroundpainter.h"
+
 #include <QMouseEvent>
 #include <QObject>
 
 #include <QDebug>
+#include <QThread>
 
 #include <image/image.h>
 
 
+class BackgroundPainter;
 
 class Painter : public QObject
 {
@@ -30,6 +34,8 @@ public slots:
 
 private:
     std::shared_ptr<Image> image;
+
+    std::unique_ptr<BackgroundPainter> backgroundPainter;
 };
 
 #endif // PAINTER_H

@@ -57,7 +57,8 @@ SOURCES       = ../../main.cpp \
 		../../image/layer.cpp \
 		../../painter.cpp \
 		../../tabforms/drawingarea.cpp \
-		../../tabforms/opentabform.cpp moc_mainwindow.cpp \
+		../../tabforms/opentabform.cpp \
+		../../backgroundpainter.cpp moc_mainwindow.cpp \
 		moc_drawingtabform.cpp \
 		moc_filterstabform.cpp \
 		moc_image.cpp \
@@ -74,6 +75,7 @@ OBJECTS       = main.o \
 		painter.o \
 		drawingarea.o \
 		opentabform.o \
+		backgroundpainter.o \
 		moc_mainwindow.o \
 		moc_drawingtabform.o \
 		moc_filterstabform.o \
@@ -147,7 +149,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		../../image/layer.h \
 		../../painter.h \
 		../../tabforms/drawingarea.h \
-		../../tabforms/opentabform.h ../../main.cpp \
+		../../tabforms/opentabform.h \
+		../../backgroundpainter.h ../../main.cpp \
 		../../mainwindow.cpp \
 		../../maintabwidget.cpp \
 		../../tabforms/drawingtabform.cpp \
@@ -156,7 +159,8 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		../../image/layer.cpp \
 		../../painter.cpp \
 		../../tabforms/drawingarea.cpp \
-		../../tabforms/opentabform.cpp
+		../../tabforms/opentabform.cpp \
+		../../backgroundpainter.cpp
 QMAKE_TARGET  = qwerty
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = qwerty
@@ -326,8 +330,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../../mainwindow.h ../../maintabwidget.h ../../tabforms/drawingtabform.h ../../tabforms/filterstabform.h ../../image/image.h ../../image/layer.h ../../painter.h ../../tabforms/drawingarea.h ../../tabforms/opentabform.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../../main.cpp ../../mainwindow.cpp ../../maintabwidget.cpp ../../tabforms/drawingtabform.cpp ../../tabforms/filterstabform.cpp ../../image/image.cpp ../../image/layer.cpp ../../painter.cpp ../../tabforms/drawingarea.cpp ../../tabforms/opentabform.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../../mainwindow.h ../../maintabwidget.h ../../tabforms/drawingtabform.h ../../tabforms/filterstabform.h ../../image/image.h ../../image/layer.h ../../painter.h ../../tabforms/drawingarea.h ../../tabforms/opentabform.h ../../backgroundpainter.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../../main.cpp ../../mainwindow.cpp ../../maintabwidget.cpp ../../tabforms/drawingtabform.cpp ../../tabforms/filterstabform.cpp ../../image/image.cpp ../../image/layer.cpp ../../painter.cpp ../../tabforms/drawingarea.cpp ../../tabforms/opentabform.cpp ../../backgroundpainter.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../../mainwindow.ui ../../tabforms/drawingtabform.ui ../../tabforms/filterstabform.ui ../../tabforms/opentabform.ui $(DISTDIR)/
 
 
@@ -359,7 +363,9 @@ moc_mainwindow.cpp: ../../tabforms/drawingtabform.h \
 		../../image/image.h \
 		../../image/layer.h \
 		../../painter.h \
+		../../backgroundpainter.h \
 		../../tabforms/filterstabform.h \
+		../../tabforms/opentabform.h \
 		../../mainwindow.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/user/qt-creator-projects/qwerty -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../../mainwindow.h -o moc_mainwindow.cpp
 
@@ -367,6 +373,7 @@ moc_drawingtabform.cpp: ../../tabforms/drawingarea.h \
 		../../image/image.h \
 		../../image/layer.h \
 		../../painter.h \
+		../../backgroundpainter.h \
 		../../tabforms/drawingtabform.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/user/qt-creator-projects/qwerty -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../../tabforms/drawingtabform.h -o moc_drawingtabform.cpp
 
@@ -377,7 +384,9 @@ moc_image.cpp: ../../image/layer.h \
 		../../image/image.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/user/qt-creator-projects/qwerty -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../../image/image.h -o moc_image.cpp
 
-moc_painter.cpp: ../../image/image.h \
+moc_painter.cpp: ../../backgroundpainter.h \
+		../../painter.h \
+		../../image/image.h \
 		../../image/layer.h \
 		../../painter.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/user/qt-creator-projects/qwerty -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../../painter.h -o moc_painter.cpp
@@ -424,7 +433,9 @@ main.o: ../../main.cpp ../../mainwindow.h \
 		../../image/image.h \
 		../../image/layer.h \
 		../../painter.h \
-		../../tabforms/filterstabform.h
+		../../backgroundpainter.h \
+		../../tabforms/filterstabform.h \
+		../../tabforms/opentabform.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../../main.cpp
 
 mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
@@ -433,7 +444,9 @@ mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../image/image.h \
 		../../image/layer.h \
 		../../painter.h \
+		../../backgroundpainter.h \
 		../../tabforms/filterstabform.h \
+		../../tabforms/opentabform.h \
 		ui_mainwindow.h \
 		../../maintabwidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../../mainwindow.cpp
@@ -446,6 +459,7 @@ drawingtabform.o: ../../tabforms/drawingtabform.cpp ../../tabforms/drawingtabfor
 		../../image/image.h \
 		../../image/layer.h \
 		../../painter.h \
+		../../backgroundpainter.h \
 		ui_drawingtabform.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o drawingtabform.o ../../tabforms/drawingtabform.cpp
 
@@ -461,6 +475,7 @@ layer.o: ../../image/layer.cpp ../../image/layer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o layer.o ../../image/layer.cpp
 
 painter.o: ../../painter.cpp ../../painter.h \
+		../../backgroundpainter.h \
 		../../image/image.h \
 		../../image/layer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o painter.o ../../painter.cpp
@@ -468,12 +483,28 @@ painter.o: ../../painter.cpp ../../painter.h \
 drawingarea.o: ../../tabforms/drawingarea.cpp ../../tabforms/drawingarea.h \
 		../../image/image.h \
 		../../image/layer.h \
-		../../painter.h
+		../../painter.h \
+		../../backgroundpainter.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o drawingarea.o ../../tabforms/drawingarea.cpp
 
 opentabform.o: ../../tabforms/opentabform.cpp ../../tabforms/opentabform.h \
-		ui_opentabform.h
+		ui_opentabform.h \
+		../../mainwindow.h \
+		../../tabforms/drawingtabform.h \
+		../../tabforms/drawingarea.h \
+		../../image/image.h \
+		../../image/layer.h \
+		../../painter.h \
+		../../backgroundpainter.h \
+		../../tabforms/filterstabform.h \
+		../../maintabwidget.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o opentabform.o ../../tabforms/opentabform.cpp
+
+backgroundpainter.o: ../../backgroundpainter.cpp ../../backgroundpainter.h \
+		../../painter.h \
+		../../image/image.h \
+		../../image/layer.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o backgroundpainter.o ../../backgroundpainter.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
