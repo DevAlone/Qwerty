@@ -29,10 +29,12 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(painter, SIGNAL(imageUpdated()),
             drawingArea, SLOT(updateSlot()), Qt::QueuedConnection);
 
-    connect(drawingArea, SIGNAL(mouseButtonClicked(QMouseEvent*)),
+    connect(drawingArea, SIGNAL(mouseButtonPressed(QMouseEvent*)),
             painter, SLOT(mouseButtonPressed(QMouseEvent*)));
     connect(drawingArea, SIGNAL(mouseMoved(QMouseEvent*)),
             painter, SLOT(mouseMoved(QMouseEvent*)));
+    connect(drawingArea, SIGNAL(mouseButtonReleased(QMouseEvent*)),
+            painter, SLOT(mouseButtonReleased(QMouseEvent*)));
 
 //    connect(openTabForm, SIGNAL(pixmapOpened(const QPixmap&)),
 //            this, SLOT(pixmapOpened(const QPixmap &)));

@@ -16,7 +16,7 @@ public:
     Image(int width, int height, const QColor &backgroundColor = Qt::transparent);
     Image(const QPixmap &pixmap);
 
-    QPixmap getImage() const;
+    QPixmap & getImage();
     bool addLayer(const Layer &layer);
     bool addLayer(const QColor &backgroundColor);
     bool addLayer(const QPixmap &pixmap);

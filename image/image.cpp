@@ -36,7 +36,7 @@ Image::Image(const QPixmap &pixmap)
     redraw();
 }
 
-QPixmap Image::getImage() const
+QPixmap & Image::getImage()
 {
     return image;
 }
@@ -44,6 +44,7 @@ QPixmap Image::getImage() const
 bool Image::addLayer(const Layer &layer)
 {
     layers.push_back(layer);
+    return true;
 }
 
 bool Image::addLayer(const QColor &backgroundColor = Qt::transparent)
@@ -51,12 +52,14 @@ bool Image::addLayer(const QColor &backgroundColor = Qt::transparent)
     Layer layer(width, height, backgroundColor);
     layer.pixmap.fill(backgroundColor);
     addLayer(layer);
+    return true;
 }
 
 bool Image::addLayer(const QPixmap &pixmap)
 {
     Layer layer(pixmap);
     addLayer(layer);
+    return true;
 }
 
 Layer *Image::getActiveLayer()

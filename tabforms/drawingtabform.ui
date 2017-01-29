@@ -25,8 +25,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>515</width>
-         <height>296</height>
+         <width>362</width>
+         <height>171</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_2"/>
@@ -123,6 +123,24 @@ QDockWidget::close-button:pressed, QDockWidget::float-button:pressed {
       <widget class="QToolButton" name="toolButton_2">
        <property name="text">
         <string>...</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="dockWidget_2">
+   <attribute name="dockWidgetArea">
+    <number>8</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_2">
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>панель быстрого доступа, 
+ может содержать несколько 
+инструментов одного типа</string>
        </property>
       </widget>
      </item>

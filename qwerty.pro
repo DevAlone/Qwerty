@@ -22,7 +22,11 @@ SOURCES += main.cpp\
     painter.cpp \
     tabforms/drawingarea.cpp \
     tabforms/opentabform.cpp \
-    backgroundpainter.cpp
+    backgroundpainter.cpp \
+    tools/tool.cpp \
+    tools/pencil.cpp \
+    tools/tooloptions.cpp \
+    tools/penciloptions.cpp
 
 HEADERS  += mainwindow.h \
     maintabwidget.h \
@@ -33,7 +37,11 @@ HEADERS  += mainwindow.h \
     painter.h \
     tabforms/drawingarea.h \
     tabforms/opentabform.h \
-    backgroundpainter.h
+    backgroundpainter.h \
+    tools/tool.h \
+    tools/pencil.h \
+    tools/tooloptions.h \
+    tools/penciloptions.h
 
 FORMS    += mainwindow.ui \
     tabforms/drawingtabform.ui \

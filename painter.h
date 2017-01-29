@@ -31,11 +31,14 @@ signals:
 public slots:
     void mouseButtonPressed(QMouseEvent *mouseEvent);
     void mouseMoved(QMouseEvent *mouseEvent);
+    void mouseButtonReleased(QMouseEvent *mouseEvent);
 
 private:
     std::shared_ptr<Image> image;
 
     std::unique_ptr<BackgroundPainter> backgroundPainter;
+
+    QList<QPoint> points;
 };
 
 #endif // PAINTER_H

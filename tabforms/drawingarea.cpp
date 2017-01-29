@@ -19,7 +19,9 @@ DrawingArea::DrawingArea(QWidget *parent) : QScrollArea(parent)
 
 bool DrawingArea::eventFilter(QObject *object, QEvent *event)
 {
+
     if(object == imageLabel) {
+        // мб лучше это всё делать в классе наследнике QLabel
         if(event->type() == QEvent::MouseMove) {
             QMouseEvent *mouseEvent = static_cast<QMouseEvent * >(event);
             if(mouseEvent->buttons() & Qt::LeftButton) {
@@ -34,7 +36,11 @@ bool DrawingArea::eventFilter(QObject *object, QEvent *event)
                 return false;
         } else if (event->type() == QEvent::MouseButtonPress) {
             QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
-            emit mouseButtonClicked(mouseEvent);
+            emit mouseButtonPressed(mouseEvent);
+            return true;
+        } else if (event->type() == QEvent::MouseButtonRelease) {
+            QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
+            emit mouseButtonReleased(mouseEvent);
             return true;
         } else if (event->type() == QEvent::Paint) {
             QPaintEvent *paintEvent = static_cast<QPaintEvent *>(event);

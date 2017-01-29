@@ -24,8 +24,9 @@ public:
     void setImage(const std::shared_ptr<Image> &value);
 
 signals:
-    void mouseButtonClicked(QMouseEvent *mouseEvent);
+    void mouseButtonPressed(QMouseEvent *mouseEvent);
     void mouseMoved(QMouseEvent *mouseEvent);
+    void mouseButtonReleased(QMouseEvent *mouseEvent);
 
 public slots:
     void imageChangedSlot(std::weak_ptr<Image> image);
