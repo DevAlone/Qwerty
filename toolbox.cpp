@@ -32,3 +32,8 @@ void ToolBox::setTool2(const std::weak_ptr<tools::Tool> &value)
 {
     tool2 = value;
 }
+
+QVector<std::shared_ptr<tools::Tool> > ToolBox::getTools() const
+{
+    return tools;
+}
