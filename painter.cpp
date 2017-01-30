@@ -32,21 +32,6 @@ void Painter::mouseButtonPressed(QMouseEvent *mouseEvent)
     points.push_back(mouseEvent->pos());
     qDebug() << "button " << mouseEvent->button() << " pressed";
 
-    Layer *activeLayer = image->getActiveLayer();
-    if(!activeLayer)
-        return;
-
-    QPixmap *pixmap = &activeLayer->pixmap;
-
-    QPainter painter(pixmap);
-    painter.setBrush(Qt::red);
-    static int i = 10;
-    painter.drawLine(0, 0, 100, i);
-    i+=10;
-
-    image->redraw();
-
-    emit imageUpdated();
 }
 
 void Painter::mouseMoved(QMouseEvent *mouseEvent)
