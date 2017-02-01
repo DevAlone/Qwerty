@@ -28,7 +28,8 @@ SOURCES += main.cpp\
     tools/tooloptions.cpp \
     tools/penciloptions.cpp \
     toolbox.cpp \
-    toolboxwidget.cpp
+    toolboxwidget.cpp \
+    toolbutton.cpp
 
 HEADERS  += mainwindow.h \
     maintabwidget.h \
@@ -46,7 +47,8 @@ HEADERS  += mainwindow.h \
     tools/penciloptions.h \
     toolbox.h \
     tools/tools.h \
-    toolboxwidget.h
+    toolboxwidget.h \
+    toolbutton.h
 
 FORMS    += mainwindow.ui \
     tabforms/drawingtabform.ui \

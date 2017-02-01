@@ -3,9 +3,14 @@
 #include <memory>
 
 #include "toolbox.h"
+#include "toolbutton.h"
 
+#include <QDockWidget>
+#include <QHBoxLayout>
 #include <QToolButton>
 #include <QWidget>
+
+#include <QDebug>
 
 class ToolBoxWidget : public QWidget
 {
@@ -26,7 +31,12 @@ private slots:
     void tool2Changed(std::weak_ptr<tools::Tool> newTool);
 private:
     std::shared_ptr<ToolBox> toolbox;
-    QVector<ToolButton> buttons;
+    QList<QObject *> buttons;
+
+    QHBoxLayout *mainLayout;
+    QHBoxLayout *toolButtonsLayout;
+    QWidget *toolBoxContentWidget;
+    //QPanel *toolOptionsPanel;
 };
 
 #endif // TOOLBOXWIDGET_H

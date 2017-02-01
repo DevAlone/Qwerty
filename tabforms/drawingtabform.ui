@@ -25,8 +25,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>515</width>
-         <height>198</height>
+         <width>237</width>
+         <height>215</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_2"/>
@@ -51,6 +51,19 @@
        <y>80</y>
        <width>21</width>
        <height>101</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>PushButton</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>140</y>
+       <width>92</width>
+       <height>27</height>
       </rect>
      </property>
      <property name="text">
@@ -104,33 +117,9 @@ QDockWidget::close-button:pressed, QDockWidget::float-button:pressed {
     <number>4</number>
    </attribute>
    <widget class="QWidget" name="dockWidgetContents_4">
-    <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="0">
-      <widget class="QPushButton" name="pushButton">
-       <property name="text">
-        <string>PushButton</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QToolButton" name="toolButton">
-       <property name="text">
-        <string>...</string>
-       </property>
-       <property name="popupMode">
-        <enum>QToolButton::MenuButtonPopup</enum>
-       </property>
-       <property name="autoRaise">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="2">
-      <widget class="QToolButton" name="toolButton_2">
-       <property name="text">
-        <string>...</string>
-       </property>
-      </widget>
+    <layout class="QHBoxLayout" name="horizontalLayout_5">
+     <item>
+      <widget class="ToolBoxWidget" name="toolbox" native="true"/>
      </item>
     </layout>
    </widget>
@@ -153,12 +142,41 @@ QDockWidget::close-button:pressed, QDockWidget::float-button:pressed {
     </layout>
    </widget>
   </widget>
+  <widget class="QDockWidget" name="dockWidget_aaaaaaaaaaaaaaaaaaaaaaa">
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_3">
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <widget class="QPushButton" name="pushButton_3">
+       <property name="text">
+        <string>PushButton</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_4">
+       <property name="text">
+        <string>PushButton</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
  </widget>
  <customwidgets>
   <customwidget>
    <class>DrawingArea</class>
    <extends>QScrollArea</extends>
    <header>drawingarea.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ToolBoxWidget</class>
+   <extends>QWidget</extends>
+   <header>toolboxwidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
