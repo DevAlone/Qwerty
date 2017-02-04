@@ -2,6 +2,7 @@
 #define TOOLBUTTON_H
 #include <memory>
 
+#include <QMouseEvent>
 #include <QToolButton>
 #include <QWidget>
 
@@ -16,9 +17,11 @@ public:
 
     std::weak_ptr<tools::Tool> getTool() const;
 
-signals:
 
+signals:
+    void rightClicked();
 public slots:
+    void mousePressEvent(QMouseEvent * e);
 
 private:
     std::weak_ptr<tools::Tool> tool;

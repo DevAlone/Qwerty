@@ -7,7 +7,6 @@ DrawingTabForm::DrawingTabForm(QWidget *parent) :
 {
     ui->setupUi(this);
 
-
 }
 
 DrawingTabForm::~DrawingTabForm()
@@ -18,4 +17,9 @@ DrawingTabForm::~DrawingTabForm()
 DrawingArea *DrawingTabForm::getDrawingArea()
 {
     return ui->drawingArea;
+}
+
+ToolBoxWidget *DrawingTabForm::getToolBoxWidget()
+{
+    return ui->toolbox;
 }

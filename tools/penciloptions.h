@@ -11,7 +11,7 @@ namespace tools {
 class PencilOptions : public ToolOptions
 {
 public:
-    PencilOptions();
+    PencilOptions(unsigned int size = 1, QColor color = Qt::black);
     unsigned int size;
     QColor color;
 };

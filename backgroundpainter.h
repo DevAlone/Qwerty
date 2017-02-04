@@ -19,7 +19,7 @@ class BackgroundPainter : public QThread
 public:
     BackgroundPainter(Painter *painter);
     void run();
-    void draw(QPixmap &pixmap, const tools::Tool &tool, const tools::ToolOptions &options,
+    void draw(QPixmap &pixmap, const tools::Tool &tool,
               const QVector<QPoint> &points);
 
 private:

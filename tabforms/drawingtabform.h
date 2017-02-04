@@ -5,6 +5,7 @@
 #include "painter.h"
 
 #include <QMainWindow>
+#include <toolboxwidget.h>
 
 #include <image/image.h>
 
@@ -21,6 +22,7 @@ public:
     ~DrawingTabForm();
 
     DrawingArea * getDrawingArea();
+    ToolBoxWidget *getToolBoxWidget();
 
 private:
     Ui::DrawingTabForm *ui;

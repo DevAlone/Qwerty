@@ -2,8 +2,10 @@
 
 namespace tools {
 
-PencilOptions::PencilOptions()
+PencilOptions::PencilOptions(unsigned int size, QColor color)
 {
+    this->size = size;
+    this->color = color;
 
 }
 

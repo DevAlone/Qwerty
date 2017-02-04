@@ -7,13 +7,14 @@
 #include "tools/tooloptions.h"
 #include "tools/penciloptions.h"
 
-namespace tools {
+//namespace tools {
 
-class Tool;
-class Pencil;
+//class Tool;
+//class Pencil;
 
-class ToolOptions;
+//class ToolOptions;
 
-}
+//}
+
 #endif // TOOLS_H
 

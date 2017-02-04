@@ -7,10 +7,10 @@ namespace tools {
 
 Pencil::Pencil()
 {
-
+    options = std::make_shared<PencilOptions>();
 }
 
-void Pencil::pressAction(QPixmap &pixmap, const ToolOptions &options, const QPoint &point) const
+void Pencil::pressAction(QPixmap &pixmap, const QPoint &point) const
 {
 //    const PencilOptions &pOptions = static_cast<const PencilOptions &>(options);//убрать эту копипасту
 //    if(pOptions.size < 1)
@@ -27,9 +27,9 @@ void Pencil::pressAction(QPixmap &pixmap, const ToolOptions &options, const QPoi
 //    }
 }
 
-void Pencil::moveAction(QPixmap &pixmap, const ToolOptions &options, const QVector<QPoint> &points) const
+void Pencil::moveAction(QPixmap &pixmap, const QVector<QPoint> &points) const
 {
-    const PencilOptions &pOptions = static_cast<const PencilOptions &>(options);//?
+    const PencilOptions &pOptions = *static_cast<PencilOptions *>(options.get());
 
     if(pOptions.size < 1)
         return;
@@ -54,9 +54,9 @@ void Pencil::moveAction(QPixmap &pixmap, const ToolOptions &options, const QVect
     painter.drawPath(path);
 }
 
-void Pencil::releaseAction(QPixmap &pixmap, const ToolOptions &options, const QVector<QPoint> &points) const
+void Pencil::releaseAction(QPixmap &pixmap, const QVector<QPoint> &points) const
 {
-    const PencilOptions &pOptions = static_cast<const PencilOptions &>(options);//?
+    const PencilOptions &pOptions = *static_cast<PencilOptions *>(options.get());
 
     if(pOptions.size < 1 || points.length() < 1)
         return;

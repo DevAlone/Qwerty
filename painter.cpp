@@ -9,7 +9,21 @@ Painter::Painter(QObject *parent) : QObject(parent)
 {
     backgroundPainter = std::make_unique<BackgroundPainter>(this);
     connect(backgroundPainter.get(), SIGNAL(finished()), this, SIGNAL(imageUpdated()));
+    toolbox = std::make_unique<ToolBox>(this);
 
+    //connect(toolbox.get(), SIGNAL(tool1Changed(std::weak_ptr<tools::Tool>)), this, SLOT
+
+    QVector<std::shared_ptr<tools::Tool>> tools;
+    for(int i = 0; i < 5; i++) {
+        std::shared_ptr<tools::Tool> tool;
+        tool = std::make_shared<tools::Pencil>();
+
+        std::shared_ptr<tools::PencilOptions> option = std::make_shared<tools::PencilOptions>((i+1)*2, Qt::red);
+        tool->setOptions(option);
+
+        tools.push_back(tool);
+    }
+    toolbox->addTools(tools);
     qDebug() << "\n\t6\n";
 
 }
@@ -45,15 +59,18 @@ void Painter::mouseMoved(QMouseEvent *mouseEvent)
         qDebug() << "ERRRRRRRRRoooooooor";
         return;
     }
-    tools::Pencil pencil;
-    tools::PencilOptions options;
-    options.color = Qt::red;
-    options.size = 2;
+    std::shared_ptr<tools::Tool> activeTool;
+    if(mouseEvent->buttons() & Qt::RightButton)
+        activeTool = toolbox->getTool2().lock();
+    else
+        activeTool = toolbox->getTool1().lock();
 
-    //backgroundPainter->draw(activeLayer->pixmap, pencil, options, points.toVector());
-    pencil.moveAction(image->getImage(), options, points.toVector());
 
-    emit imageUpdated();
+    if(activeTool) {
+        activeTool->moveAction(image->getImage(), points.toVector());
+
+        emit imageUpdated();
+    }
 
     //backgroundPainter->draw(&activeLayer->pixmap, 0, 0, mouseEvent);
 
@@ -72,13 +89,21 @@ void Painter::mouseButtonReleased(QMouseEvent *mouseEvent)
         qDebug() << "ERRRRRRRRRoooooooor";
         return;
     }
-    tools::Pencil pencil;
-    tools::PencilOptions options;
-    options.color = Qt::red;
-    options.size = 2;
 
-    backgroundPainter->draw(activeLayer->pixmap, pencil, options, points.toVector());
+    std::shared_ptr<tools::Tool> activeTool;
+    if(mouseEvent->button() == Qt::RightButton)
+        activeTool = toolbox->getTool2().lock();
+    else
+        activeTool = toolbox->getTool1().lock();
+
+    if(activeTool)
+        backgroundPainter->draw(activeLayer->pixmap, *activeTool.get(), points.toVector());
+
     points.clear();
-
-
 }
+
+std::shared_ptr<ToolBox> Painter::getToolbox() const
+{
+    return toolbox;
+}
+

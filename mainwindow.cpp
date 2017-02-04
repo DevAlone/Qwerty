@@ -43,6 +43,14 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     painter->setImage(std::make_shared<Image>(700, 700, Qt::black));
+
+    drawingTabForm->getToolBoxWidget()->setToolBox(getPainter()->getToolbox());
+//    QVector<std::shared_ptr<tools::Tool>> tools = {
+//        std::make_shared<tools::Pencil>(),
+//        std::make_shared<tools::Pencil>(),
+//        std::make_shared<tools::Pencil>(),
+//    };
+//    getPainter()->getToolbox()->addTools(tools);
 }
 
 MainWindow::~MainWindow()
