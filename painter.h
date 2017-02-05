@@ -12,11 +12,9 @@
 
 #include <image/image.h>
 
-#include <tools/pencil.h>
-#include <tools/penciloptions.h>
-#include <tools/tool.h>
-#include <tools/tooloptions.h>
-#include <tools/tools.h>
+#include "tool.h"
+#include "tooloptions.h"
+#include "tools/tools.h"
 
 
 class BackgroundPainter;

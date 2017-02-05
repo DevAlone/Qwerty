@@ -7,8 +7,8 @@
 
 #include <QThread>
 
-#include <tools/tool.h>
-#include <tools/tooloptions.h>
+#include <tool.h>
+#include <tooloptions.h>
 #include <QPainter>
 
 

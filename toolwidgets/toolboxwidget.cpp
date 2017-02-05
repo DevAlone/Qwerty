@@ -1,17 +1,22 @@
 #include "toolboxwidget.h"
 
 #include <QPushButton>
+#include <tooloptions.h>
+#include <tooloptions.h>
 
 ToolBoxWidget::ToolBoxWidget(QWidget *parent) : QWidget(parent)
 {
     mainLayout = new QHBoxLayout;
     toolButtonsLayout = new QHBoxLayout;
 
-    toolBoxContentWidget = new QWidget;
+    //toolBoxContentWidget = new QWidget;
 
     this->setLayout(mainLayout);
     mainLayout->addLayout(toolButtonsLayout);
-    mainLayout->addWidget(toolBoxContentWidget);
+    //mainLayout->addWidget(toolBoxContentWidget);
+
+    toolOptionsGridLayout = new QGridLayout();
+    mainLayout->addLayout(toolOptionsGridLayout);
 
     //    for(int i=0;i<100;i++) {
     //        QPushButton *button = new QPushButton;
@@ -88,6 +93,19 @@ void ToolBoxWidget::tool1Changed(std::weak_ptr<tools::Tool> newTool)
         }
         button->setStyleSheet(button->styleSheet() + "ToolButton { background: none; }");
     }
+
+    std::shared_ptr<tools::Tool> tool = newTool.lock();
+    if(!tool)
+        return;
+    std::shared_ptr<tools::ToolOptions> options = tool->getOptions();
+    if(!options)
+        return;
+    auto widget = options->getWidget();
+
+    if(!widget)
+        return;
+
+    toolOptionsGridLayout->addWidget(widget.get(), 0, 0);
 }
 
 void ToolBoxWidget::tool2Changed(std::weak_ptr<tools::Tool> newTool)
@@ -110,6 +128,20 @@ void ToolBoxWidget::tool2Changed(std::weak_ptr<tools::Tool> newTool)
                               "border-width: 1px;"
                               "border-color: black; }");
     }
+
+    std::shared_ptr<tools::Tool> tool = newTool.lock();
+    if(!tool)
+        return;
+    std::shared_ptr<tools::ToolOptions> options = tool->getOptions();
+    if(!options)
+        return;
+    auto widget = options->getWidget();
+
+    if(!widget)
+        return;
+
+    toolOptionsGridLayout->addWidget(widget.get(), 0, 1);
+
 }
 
 void ToolBoxWidget::toolButton1Clicked()

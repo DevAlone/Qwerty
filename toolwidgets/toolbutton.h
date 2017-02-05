@@ -6,7 +6,7 @@
 #include <QToolButton>
 #include <QWidget>
 
-#include <tools/tool.h>
+#include <tool.h>
 #include <tools/tools.h>
 
 class ToolButton : public QToolButton

@@ -5,7 +5,7 @@
 #include "painter.h"
 
 #include <QMainWindow>
-#include <toolboxwidget.h>
+#include <toolwidgets/toolboxwidget.h>
 
 #include <image/image.h>
 

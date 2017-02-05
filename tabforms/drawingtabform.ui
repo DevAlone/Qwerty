@@ -25,8 +25,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>237</width>
-         <height>215</height>
+         <width>320</width>
+         <height>239</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_2"/>
@@ -170,13 +170,13 @@ QDockWidget::close-button:pressed, QDockWidget::float-button:pressed {
   <customwidget>
    <class>DrawingArea</class>
    <extends>QScrollArea</extends>
-   <header>drawingarea.h</header>
+   <header>tabforms/drawingarea.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>ToolBoxWidget</class>
    <extends>QWidget</extends>
-   <header>toolboxwidget.h</header>
+   <header>toolwidgets/toolboxwidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

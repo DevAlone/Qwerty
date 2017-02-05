@@ -23,13 +23,12 @@ SOURCES += main.cpp\
     tabforms/drawingarea.cpp \
     tabforms/opentabform.cpp \
     backgroundpainter.cpp \
-    tools/tool.cpp \
-    tools/pencil.cpp \
-    tools/tooloptions.cpp \
-    tools/penciloptions.cpp \
+    tool.cpp \
+    tooloptions.cpp \
     toolbox.cpp \
-    toolboxwidget.cpp \
-    toolbutton.cpp
+    toolwidgets/toolboxwidget.cpp \
+    toolwidgets/toolbutton.cpp \
+    toolwidgets/tooloptionswidget.cpp
 
 HEADERS  += mainwindow.h \
     maintabwidget.h \
@@ -41,18 +40,31 @@ HEADERS  += mainwindow.h \
     tabforms/drawingarea.h \
     tabforms/opentabform.h \
     backgroundpainter.h \
-    tools/tool.h \
-    tools/pencil.h \
-    tools/tooloptions.h \
-    tools/penciloptions.h \
+    tool.h \
+    tooloptions.h \
     toolbox.h \
     tools/tools.h \
-    toolboxwidget.h \
-    toolbutton.h
+    toolwidgets/toolboxwidget.h \
+    toolwidgets/toolbutton.h \
+    toolwidgets/tooloptionswidget.h
 
 FORMS    += mainwindow.ui \
     tabforms/drawingtabform.ui \
     tabforms/filterstabform.ui \
     tabforms/opentabform.ui
+
+
+
+HEADERS += \
+        tools/pencil/pencil.h \
+        tools/pencil/penciloptions.h \
+    tools/pencil/penciloptionswidget.h
+
+SOURCES += \
+        tools/pencil/pencil.cpp \
+        tools/pencil/penciloptions.cpp \
+    tools/pencil/penciloptionswidget.cpp
+
+
 
 CONFIG += c++14

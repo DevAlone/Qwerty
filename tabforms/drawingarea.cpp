@@ -43,7 +43,7 @@ bool DrawingArea::eventFilter(QObject *object, QEvent *event)
             emit mouseButtonReleased(mouseEvent);
             return true;
         } else if (event->type() == QEvent::Paint) {
-            QPaintEvent *paintEvent = static_cast<QPaintEvent *>(event);
+            //QPaintEvent *paintEvent = static_cast<QPaintEvent *>(event);
             //QLabel *label = static_cast<QLabel *>(object);
 
             if(imageLabel->pixmap() && !imageLabel->pixmap()->isNull()) {

@@ -7,10 +7,12 @@
 
 #include <QDockWidget>
 #include <QHBoxLayout>
+#include <QTableWidget>
 #include <QToolButton>
 #include <QWidget>
 
 #include <QDebug>
+
 
 class ToolBoxWidget : public QWidget
 {
@@ -39,7 +41,8 @@ private:
 
     QHBoxLayout *mainLayout;
     QHBoxLayout *toolButtonsLayout;
-    QWidget *toolBoxContentWidget;
+    //QWidget *toolBoxContentWidget;
+    QGridLayout *toolOptionsGridLayout;
     //QPanel *toolOptionsPanel;
 };
 

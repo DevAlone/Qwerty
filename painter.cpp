@@ -2,8 +2,8 @@
 
 #include <QPainter>
 
-#include <tools/pencil.h>
-#include <tools/penciloptions.h>
+#include <tools/pencil/pencil.h>
+#include <tools/pencil/penciloptions.h>
 
 Painter::Painter(QObject *parent) : QObject(parent)
 {
